@@ -30,7 +30,7 @@ fi.calculate_wake()
 hor_plane = fi.get_hor_plane()
 
 # Introduce variation in wind direct
-fi.reinitialize_flow_field(wind_direction=[270,280],wind_layout=[[0,0],[0,500]])
+fi.reinitialize_flow_field(wind_speed = [10, 15, 9], wind_direction=[320,320, 270],wind_layout=[[0,0,500],[0,500, 0]])
 fi.calculate_wake()
 hor_plane_het_dir = fi.get_hor_plane()
 
@@ -41,8 +41,8 @@ ax = axarr[0]
 im = wfct.visualization.visualize_cut_plane(
     hor_plane,
     ax,
-    minSpeed=4,
-    maxSpeed=9
+    minSpeed=2,
+    maxSpeed=15
 )
 cbar = fig.colorbar(im, ax=ax, fraction=0.025, pad=0.04)
 cbar.set_label("Wind Speed (m/s)", labelpad=+10)
@@ -52,8 +52,8 @@ ax = axarr[1]
 im = wfct.visualization.visualize_cut_plane(
     hor_plane_het_dir,
     ax,
-    minSpeed=4,
-    maxSpeed=9
+    minSpeed=2,
+    maxSpeed=15
 )
 cbar = fig.colorbar(im, ax=ax, fraction=0.025, pad=0.04)
 cbar.set_label("Wind Speed (m/s)", labelpad=+10)
